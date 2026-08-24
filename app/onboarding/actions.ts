@@ -281,6 +281,7 @@ export async function createBusiness(
       business_type: validation.data.businessType,
       currency: validation.data.currency,
       email: validation.data.businessEmail,
+      name: validation.data.businessName,
       owner_id: user.id,
       phone: validation.data.businessPhone,
     })
@@ -288,12 +289,8 @@ export async function createBusiness(
     .single();
 
   if (createBusinessError) {
-    const message =
-      createBusinessError.code === "23505"
-        ? "This account already has a business. Continue to the dashboard."
-        : "We couldn't create your business right now. Please try again.";
-
-    return getErrorState(validation.fields, message);
+    console.error("Business creation failed:", createBusinessError);
+    throw new Error(createBusinessError.message);
   }
 
   const businessId = (business as { id?: string } | null)?.id;
