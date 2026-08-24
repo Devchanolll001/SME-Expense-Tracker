@@ -38,7 +38,7 @@ begin
       and index_info.indisunique
       and index_info.indpred is null
       and (
-        select array_agg(attribute.attname order by key_columns.ordinality)
+        select array_agg(attribute.attname::text order by key_columns.ordinality)
         from unnest(index_info.indkey) with ordinality as key_columns(attnum, ordinality)
         join pg_attribute as attribute
           on attribute.attrelid = index_info.indrelid
