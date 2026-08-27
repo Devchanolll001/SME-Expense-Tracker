@@ -93,7 +93,7 @@ export default async function ResetPasswordPage({
         <div className="space-y-4">
           <Link
             href="/forgot-password"
-            className="block w-full rounded-lg bg-emerald-600 px-4 py-3.5 text-center font-semibold text-white transition hover:bg-emerald-700"
+            className="block w-full rounded-xl bg-emerald-600 px-4 py-3.5 text-center font-semibold text-white shadow-sm transition hover:bg-emerald-700"
           >
             Request a new reset link
           </Link>

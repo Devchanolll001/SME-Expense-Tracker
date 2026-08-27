@@ -27,7 +27,7 @@ function SummaryCard({
   value: string;
 }) {
   return (
-    <article className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+    <article className="rounded-xl border border-[#e3d7ca] bg-[#fffdfa] p-5 shadow-sm">
       <p className="text-sm font-medium text-slate-500">{label}</p>
       <p className="mt-3 text-2xl font-bold text-slate-950">{value}</p>
       <p className="mt-2 text-xs text-slate-500">{detail}</p>
@@ -45,7 +45,7 @@ function PeriodSelector({ value }: { value: DashboardPeriod }) {
         id="period"
         name="period"
         defaultValue={value}
-        className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100"
+        className="rounded-lg border border-[#dfd1c2] bg-[#fffdfa] px-3 py-2 text-sm font-medium text-slate-700 outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100"
       >
         {DASHBOARD_PERIODS.map((period) => (
           <option key={period.value} value={period.value}>
@@ -55,7 +55,7 @@ function PeriodSelector({ value }: { value: DashboardPeriod }) {
       </select>
       <button
         type="submit"
-        className="rounded-lg bg-slate-900 px-3 py-2 text-sm font-semibold text-white transition hover:bg-slate-700"
+        className="rounded-lg bg-[#895129] px-3 py-2 text-sm font-semibold text-white transition hover:bg-[#6f3f20]"
       >
         Apply
       </button>
@@ -82,7 +82,7 @@ function IncomeExpenseChart({
   );
 
   return (
-    <section className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+    <section className="rounded-xl border border-[#e3d7ca] bg-[#fffdfa] p-5 shadow-sm">
       <div className="flex items-start justify-between gap-4">
         <div>
           <h2 className="text-lg font-bold text-slate-950">
@@ -119,7 +119,7 @@ function IncomeExpenseChart({
                     <div className="flex items-center gap-3">
                       <div className="h-3 flex-1 rounded-lg bg-slate-100">
                         <div
-                          className="h-3 rounded-lg bg-emerald-500"
+                          className="h-3 rounded-lg bg-[#2f7d4a]"
                           style={{ width: `${Math.max(incomeWidth, 2)}%` }}
                         />
                       </div>
@@ -135,7 +135,7 @@ function IncomeExpenseChart({
                     <div className="flex items-center gap-3">
                       <div className="h-3 flex-1 rounded-lg bg-slate-100">
                         <div
-                          className="h-3 rounded-lg bg-rose-500"
+                          className="h-3 rounded-lg bg-[#660f09]"
                           style={{ width: `${Math.max(expenseWidth, 2)}%` }}
                         />
                       </div>
@@ -166,7 +166,7 @@ function ExpenseBreakdown({
   dashboard: DashboardOverviewProps["dashboard"];
 }) {
   return (
-    <section className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+    <section className="rounded-xl border border-[#e3d7ca] bg-[#fffdfa] p-5 shadow-sm">
       <h2 className="text-lg font-bold text-slate-950">Expense Breakdown</h2>
 
       {dashboard.breakdown.length > 0 ? (
@@ -184,7 +184,7 @@ function ExpenseBreakdown({
               <div className="flex items-center gap-3">
                 <div className="h-2 flex-1 rounded-lg bg-slate-100">
                   <div
-                    className="h-2 rounded-lg bg-amber-500"
+                    className="h-2 rounded-lg bg-[#8a6e29]"
                     style={{ width: `${Math.max(item.percentage, 2)}%` }}
                   />
                 </div>
@@ -212,7 +212,7 @@ function RecentTransactions({
   dashboard: DashboardOverviewProps["dashboard"];
 }) {
   return (
-    <section className="rounded-lg border border-slate-200 bg-white shadow-sm">
+    <section className="rounded-xl border border-[#e3d7ca] bg-[#fffdfa] shadow-sm">
       <div className="flex items-center justify-between gap-4 border-b border-slate-200 p-5">
         <div>
           <h2 className="text-lg font-bold text-slate-950">
@@ -248,8 +248,8 @@ function RecentTransactions({
               <p
                 className={
                   transaction.type === "income"
-                    ? "font-bold text-emerald-700"
-                    : "font-bold text-rose-700"
+                    ? "font-bold text-[#2f7d4a]"
+                    : "font-bold text-[#660f09]"
                 }
               >
                 {transaction.type === "income" ? "+" : "-"}
@@ -286,7 +286,7 @@ export function DashboardOverview({
           <PeriodSelector value={dashboard.period.value} />
           <Link
             href="/transactions/new"
-            className="rounded-lg bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-700"
+            className="rounded-lg bg-[#895129] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[#6f3f20]"
           >
             Add Transaction
           </Link>

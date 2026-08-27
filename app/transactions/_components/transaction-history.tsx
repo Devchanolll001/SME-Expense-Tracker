@@ -34,8 +34,8 @@ function hasActiveFilters(filters: TransactionFilters) {
 function TypeBadge({ type }: { type: TransactionListItem["type"] }) {
   const classes =
     type === "income"
-      ? "border-emerald-200 bg-emerald-50 text-emerald-700"
-      : "border-rose-200 bg-rose-50 text-rose-700";
+      ? "border-[#b8d8c0] bg-[#e5f2e8] text-[#2f7d4a]"
+      : "border-[#e2bdb4] bg-[#f8e9e5] text-[#660f09]";
 
   return (
     <span
@@ -59,8 +59,8 @@ function Amount({
     <span
       className={
         type === "income"
-          ? "font-bold text-emerald-700"
-          : "font-bold text-rose-700"
+          ? "font-bold text-[#2f7d4a]"
+          : "font-bold text-[#660f09]"
       }
     >
       {type === "income" ? "+" : "-"}

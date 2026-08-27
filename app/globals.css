@@ -1,8 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f7f1e8;
+  --foreground: #2f241f;
+  --campfire-brown: #895129;
+  --campfire-gold: #ad7a32;
+  --campfire-olive: #8a6e29;
+  --campfire-red: #660f09;
 }
 
 @theme inline {
@@ -12,15 +16,66 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), sans-serif;
 }
+
+/* Keep the established utility classes, but align their visual output with the product palette. */
+.bg-slate-50 { background-color: #faf7f2; }
+.bg-slate-100 { background-color: #f3ece2; }
+.bg-slate-950, .bg-slate-900 { background-color: var(--campfire-brown); }
+.text-slate-950, .text-slate-900 { color: #2f241f; }
+.text-slate-700, .text-slate-600 { color: #5c4b42; }
+.text-slate-500, .text-slate-400 { color: #806f64; }
+.border-slate-200, .border-slate-300 { border-color: #dfd1c2; }
+.divide-slate-100 > :not([hidden]) ~ :not([hidden]) { border-color: #eee4d9; }
+.bg-emerald-50 { background-color: #f7efdf; }
+.bg-emerald-600, .bg-emerald-500 { background-color: var(--campfire-brown); }
+.bg-emerald-700 { background-color: #6f3f20; }
+.text-emerald-600, .text-emerald-700 { color: var(--campfire-brown); }
+.border-emerald-200 { border-color: #dcc18e; }
+.focus\:border-emerald-500:focus { border-color: var(--campfire-gold); }
+.focus\:ring-emerald-100:focus { --tw-ring-color: #f3dfb8; }
+.bg-rose-50 { background-color: #f8e9e5; }
+.bg-rose-500, .bg-rose-600 { background-color: var(--campfire-red); }
+.bg-rose-700 { background-color: #4f0b07; }
+.text-rose-600, .text-rose-700 { color: var(--campfire-red); }
+.border-rose-200, .border-rose-300 { border-color: #e2bdb4; }
+.bg-amber-500 { background-color: var(--campfire-gold); }
+.text-amber-600, .text-amber-700 { color: var(--campfire-olive); }
+
+.auth-atmosphere {
+  background: #ead8bc;
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-atmosphere::before,
+.auth-atmosphere::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.auth-atmosphere::before {
+  width: 42rem;
+  height: 18rem;
+  left: -10rem;
+  bottom: -7rem;
+  background: #d7b783;
+  transform: rotate(-8deg);
+}
+
+.auth-atmosphere::after {
+  width: 34rem;
+  height: 14rem;
+  right: -12rem;
+  top: -5rem;
+  background: #f3e7d2;
+  transform: rotate(12deg);
+}
+
+.auth-copy { position: relative; z-index: 1; }

@@ -1,4 +1,7 @@
 import Link from "next/link";
+import { AuthShell } from "@/app/auth/_components/auth-shell";
+import { PasswordField } from "@/app/auth/_components/password-field";
+import { SubmitButton } from "@/app/auth/_components/submit-button";
 import { register } from "./actions";
 
 type RegisterPageProps = {
@@ -14,40 +17,13 @@ export default async function RegisterPage({
   const params = await searchParams;
 
   return (
-    <main className="min-h-screen bg-slate-950 px-4 py-12">
-      <div className="mx-auto flex min-h-[80vh] max-w-md items-center">
-        <div className="w-full rounded-3xl bg-white p-8 shadow-2xl">
-          <div className="mb-8">
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-600 text-xl font-bold text-white">
-              ₦
-            </div>
-
-            <p className="text-sm font-semibold text-emerald-600">
-              SME Expense Tracker
-            </p>
-
-            <h1 className="mt-2 text-3xl font-bold text-slate-900">
-              Create your account
-            </h1>
-
-            <p className="mt-2 text-sm text-slate-500">
-              Start managing your business finances smarter.
-            </p>
-          </div>
-
-          {params.error && (
-            <div className="mb-5 rounded-xl bg-red-50 px-4 py-3 text-sm text-red-700">
-              {params.error}
-            </div>
-          )}
-
-          {params.success && (
-            <div className="mb-5 rounded-xl bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
-              {params.success}
-            </div>
-          )}
-
-          <form action={register} className="space-y-5">
+    <AuthShell
+      title="Create your account"
+      subtitle="Start managing your business finances smarter."
+      error={params.error}
+      success={params.success}
+    >
+      <form action={register} className="space-y-5">
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label
@@ -64,7 +40,7 @@ export default async function RegisterPage({
                   required
                   autoComplete="given-name"
                   placeholder="Francis"
-                  className="w-full rounded-xl border border-slate-200 px-4 py-3 outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100"
+                  className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-slate-900 shadow-sm placeholder:text-slate-400 transition focus:border-emerald-500 focus:outline-none focus:ring-4 focus:ring-emerald-100"
                 />
               </div>
 
@@ -83,7 +59,7 @@ export default async function RegisterPage({
                   required
                   autoComplete="family-name"
                   placeholder="Wapching"
-                  className="w-full rounded-xl border border-slate-200 px-4 py-3 outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100"
+                  className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-slate-900 shadow-sm placeholder:text-slate-400 transition focus:border-emerald-500 focus:outline-none focus:ring-4 focus:ring-emerald-100"
                 />
               </div>
             </div>
@@ -103,53 +79,31 @@ export default async function RegisterPage({
                 required
                 autoComplete="email"
                 placeholder="you@example.com"
-                className="w-full rounded-xl border border-slate-200 px-4 py-3 outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100"
+                className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-slate-900 shadow-sm placeholder:text-slate-400 transition focus:border-emerald-500 focus:outline-none focus:ring-4 focus:ring-emerald-100"
               />
             </div>
 
-            <div>
-              <label
-                htmlFor="password"
-                className="mb-2 block text-sm font-medium text-slate-700"
-              >
-                Password
-              </label>
+            <PasswordField
+              id="password"
+              name="password"
+              label="Password"
+              minLength={8}
+              autoComplete="new-password"
+              placeholder="At least 8 characters"
+              helperText="Use at least 8 characters."
+            />
 
-              <input
-                id="password"
-                name="password"
-                type="password"
-                required
-                minLength={8}
-                autoComplete="new-password"
-                placeholder="At least 8 characters"
-                className="w-full rounded-xl border border-slate-200 px-4 py-3 outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100"
-              />
-
-              <p className="mt-2 text-xs text-slate-400">
-                Use at least 8 characters.
-              </p>
-            </div>
-
-            <button
-              type="submit"
-              className="w-full rounded-xl bg-emerald-600 px-4 py-3.5 font-semibold text-white transition hover:bg-emerald-700"
-            >
+            <SubmitButton pendingText="Creating account...">
               Create account
-            </button>
+            </SubmitButton>
           </form>
 
           <p className="mt-6 text-center text-sm text-slate-500">
             Already have an account?{" "}
-            <Link
-              href="/login"
-              className="font-semibold text-emerald-600 hover:text-emerald-700"
-            >
+            <Link href="/login" className="font-semibold text-emerald-600 hover:text-emerald-700">
               Sign in
             </Link>
           </p>
-        </div>
-      </div>
-    </main>
+    </AuthShell>
   );
 }

@@ -39,9 +39,12 @@ function FieldError({ errors, id }: FieldErrorProps) {
 
 function inputClasses(hasError: boolean) {
   return [
-    "w-full rounded-lg border px-4 py-3 outline-none transition",
-    "focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100",
-    hasError ? "border-red-300 bg-red-50" : "border-slate-200 bg-white",
+    "w-full rounded-xl border px-4 py-3 text-slate-900 shadow-sm transition duration-150 ease-out placeholder:text-slate-400",
+    "focus:border-emerald-500 focus:outline-none focus:ring-4 focus:ring-emerald-100",
+    "disabled:cursor-not-allowed disabled:border-slate-200 disabled:bg-slate-100 disabled:text-slate-500",
+    hasError
+      ? "border-red-300 bg-red-50 text-red-900 placeholder:text-red-300"
+      : "border-slate-300 bg-white",
   ].join(" ");
 }
 

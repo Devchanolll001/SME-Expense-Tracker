@@ -42,8 +42,8 @@ function formatCreatedAt(value: string) {
 function TypeBadge({ type }: { type: CategoryType }) {
   const classes = {
     both: "border-sky-200 bg-sky-50 text-sky-700",
-    expense: "border-rose-200 bg-rose-50 text-rose-700",
-    income: "border-emerald-200 bg-emerald-50 text-emerald-700",
+    expense: "border-[#e2bdb4] bg-[#f8e9e5] text-[#660f09]",
+    income: "border-[#b8d8c0] bg-[#e5f2e8] text-[#2f7d4a]",
   }[type];
 
   return (

@@ -66,14 +66,14 @@ function getRangeText(
 
 function getAmountClass(tone: "income" | "expense" | "neutral") {
   if (tone === "income") {
-    return "text-emerald-700";
+    return "text-[#2f7d4a]";
   }
 
   if (tone === "expense") {
-    return "text-rose-700";
+    return "text-[#660f09]";
   }
 
-  return "text-slate-950";
+  return "text-[#2f241f]";
 }
 
 function SummaryCard({
@@ -331,7 +331,7 @@ function IncomeExpenseChart({
                     <div className="flex min-w-0 items-center gap-3">
                       <div className="h-3 min-w-0 flex-1 rounded-lg bg-slate-100">
                         <div
-                          className="h-3 rounded-lg bg-emerald-500"
+                          className="h-3 rounded-lg bg-[#2f7d4a]"
                           style={{
                             width: `${incomeValue > 0 ? Math.max(incomeWidth, 2) : 0}%`,
                           }}
@@ -349,7 +349,7 @@ function IncomeExpenseChart({
                     <div className="flex min-w-0 items-center gap-3">
                       <div className="h-3 min-w-0 flex-1 rounded-lg bg-slate-100">
                         <div
-                          className="h-3 rounded-lg bg-rose-500"
+                          className="h-3 rounded-lg bg-[#660f09]"
                           style={{
                             width: `${expenseValue > 0 ? Math.max(expenseWidth, 2) : 0}%`,
                           }}
@@ -387,7 +387,7 @@ function BreakdownList({
   title: string;
   tone: "expense" | "income";
 }) {
-  const barColor = tone === "income" ? "bg-emerald-500" : "bg-amber-500";
+  const barColor = tone === "income" ? "bg-[#2f7d4a]" : "bg-[#660f09]";
 
   return (
     <section className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
@@ -501,8 +501,12 @@ function FinancialSummary({
           </div>
 
           <ul className="space-y-2 text-sm text-slate-600">
-            <li>{getTrendText(comparison.incomeChangePercent, "Income")}</li>
-            <li>{getTrendText(comparison.expenseChangePercent, "Expenses")}</li>
+            <li className="text-[#2f7d4a]">
+              {getTrendText(comparison.incomeChangePercent, "Income")}
+            </li>
+            <li className="text-[#660f09]">
+              {getTrendText(comparison.expenseChangePercent, "Expenses")}
+            </li>
           </ul>
         </div>
       ) : (
@@ -597,7 +601,7 @@ function LargestExpenses({
 function TypeBadge({ type }: { type: ReportTransaction["type"] }) {
   const classes =
     type === "income"
-      ? "border-emerald-200 bg-emerald-50 text-emerald-700"
+      ? "border-[#b8d8c0] bg-[#e5f2e8] text-[#2f7d4a]"
       : "border-rose-200 bg-rose-50 text-rose-700";
 
   return (
@@ -622,7 +626,7 @@ function TransactionAmount({
     <span
       className={
         type === "income"
-          ? "font-bold text-emerald-700"
+          ? "font-bold text-[#2f7d4a]"
           : "font-bold text-rose-700"
       }
     >

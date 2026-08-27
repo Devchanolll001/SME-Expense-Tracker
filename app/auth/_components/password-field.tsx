@@ -41,7 +41,7 @@ export function PasswordField({
           minLength={minLength}
           autoComplete={autoComplete}
           placeholder={placeholder}
-          className="w-full rounded-lg border border-slate-200 px-4 py-3 pr-20 outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100"
+          className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 pr-20 text-slate-900 shadow-sm placeholder:text-slate-400 transition duration-150 ease-out focus:border-emerald-500 focus:outline-none focus:ring-4 focus:ring-emerald-100 disabled:cursor-not-allowed disabled:border-slate-200 disabled:bg-slate-100 disabled:text-slate-500"
         />
 
         <button
@@ -49,13 +49,13 @@ export function PasswordField({
           aria-label={isVisible ? "Hide password" : "Show password"}
           aria-pressed={isVisible}
           onClick={() => setIsVisible((current) => !current)}
-          className="absolute right-3 top-1/2 -translate-y-1/2 text-sm font-semibold text-emerald-600 hover:text-emerald-700"
+          className="absolute right-3 top-1/2 -translate-y-1/2 rounded-md px-2 py-1 text-xs font-semibold text-emerald-700 transition hover:bg-emerald-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-200"
         >
           {isVisible ? "Hide" : "Show"}
         </button>
       </div>
 
-      {helperText && <p className="mt-2 text-xs text-slate-400">{helperText}</p>}
+      {helperText && <p className="mt-2 text-xs text-slate-500">{helperText}</p>}
     </div>
   );
 }

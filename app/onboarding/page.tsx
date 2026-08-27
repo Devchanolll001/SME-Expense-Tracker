@@ -33,25 +33,25 @@ export default async function OnboardingPage() {
       : null;
 
   return (
-    <main className="min-h-screen bg-slate-950 px-4 py-10">
-      <div className="mx-auto flex min-h-[84vh] max-w-lg items-center">
-        <div className="w-full rounded-lg bg-white p-6 shadow-2xl sm:p-8">
+    <main className="min-h-screen bg-slate-100 px-4 py-10 sm:px-6 lg:px-8">
+      <div className="mx-auto flex min-h-[84vh] max-w-lg items-center justify-center">
+        <div className="w-full rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_18px_45px_rgba(15,23,42,0.08)] sm:p-8">
           <div className="mb-8 flex items-start justify-between gap-4">
             <div>
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-emerald-600 text-xl font-bold text-white">
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-600 text-xl font-bold text-white shadow-sm shadow-emerald-600/25">
                 N
               </div>
-              <p className="text-sm font-semibold text-emerald-600">
+              <p className="text-sm font-semibold uppercase tracking-[0.08em] text-emerald-700">
                 SME Expense Tracker
               </p>
-              <h1 className="mt-2 text-3xl font-bold text-slate-900">
+              <h1 className="mt-3 text-3xl font-bold tracking-tight text-slate-900">
                 Set Up Your Business
               </h1>
-              <p className="mt-2 text-sm text-slate-500">
+              <p className="mt-2 text-sm leading-6 text-slate-600">
                 Set up your business to get started.
               </p>
               {displayName && (
-                <p className="mt-3 text-xs font-medium text-slate-400">
+                <p className="mt-3 text-xs font-medium text-slate-500">
                   Signed in as {displayName}
                 </p>
               )}
@@ -66,7 +66,7 @@ export default async function OnboardingPage() {
 
           {result.status === "error" ? (
             <div
-              className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700"
+              className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-700"
               role="alert"
             >
               {result.message}
