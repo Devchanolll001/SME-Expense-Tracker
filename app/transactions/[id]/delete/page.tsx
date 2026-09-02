@@ -85,7 +85,7 @@ export default async function DeleteTransactionPage({
             <p className="text-sm font-semibold uppercase text-rose-600">
               Delete Transaction
             </p>
-            <h2 className="mt-2 break-words text-xl font-bold text-slate-950">
+            <h2 className="mt-2 wrap-break-word text-xl font-bold text-slate-950">
               {transaction.description}
             </h2>
             <p className="mt-1 text-sm text-slate-500">
@@ -116,7 +116,7 @@ export default async function DeleteTransactionPage({
             {transaction.reference && (
               <div>
                 <dt className="font-medium text-rose-900">Reference</dt>
-                <dd className="mt-1 break-words text-rose-800">
+                <dd className="mt-1 wrap-break-word text-rose-800">
                   {transaction.reference}
                 </dd>
               </div>

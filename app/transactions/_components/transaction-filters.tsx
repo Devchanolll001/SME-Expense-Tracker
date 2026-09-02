@@ -29,7 +29,7 @@ export function TransactionFilters({
     <form
       action="/transactions"
       method="get"
-      className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm"
+      className="rounded-2xl border border-[#e7ded2] bg-white p-5 shadow-[0_8px_24px_rgba(89,55,30,0.05)]"
     >
       <div className="grid gap-4 lg:grid-cols-[1.4fr_repeat(5,1fr)_auto]">
         <div>
@@ -45,7 +45,7 @@ export function TransactionFilters({
             type="search"
             defaultValue={filters.search}
             placeholder="Search transactions..."
-            className="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100"
+            className="w-full rounded-lg border border-slate-200 bg-[#fffdfa] px-3 py-2.5 text-sm outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100"
           />
         </div>
 
@@ -60,7 +60,7 @@ export function TransactionFilters({
             id="type"
             name="type"
             defaultValue={filters.type}
-            className="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100"
+            className="w-full rounded-lg border border-slate-200 bg-[#fffdfa] px-3 py-2.5 text-sm outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100"
           >
             <option value="all">All</option>
             {TRANSACTION_TYPES.map((type) => (
@@ -82,7 +82,7 @@ export function TransactionFilters({
             id="category"
             name="category"
             defaultValue={filters.categoryId}
-            className="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100"
+            className="w-full rounded-lg border border-slate-200 bg-[#fffdfa] px-3 py-2.5 text-sm outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100"
           >
             <option value="all">All</option>
             {categoryOptions.map((category) => (
@@ -104,7 +104,7 @@ export function TransactionFilters({
             id="paymentMethod"
             name="paymentMethod"
             defaultValue={filters.paymentMethod}
-            className="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100"
+            className="w-full rounded-lg border border-slate-200 bg-[#fffdfa] px-3 py-2.5 text-sm outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100"
           >
             <option value="all">All</option>
             {PAYMENT_METHODS.map((method) => (
@@ -126,7 +126,7 @@ export function TransactionFilters({
             id="date"
             name="date"
             defaultValue={filters.date}
-            className="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100"
+            className="w-full rounded-lg border border-slate-200 bg-[#fffdfa] px-3 py-2.5 text-sm outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100"
           >
             {DATE_FILTERS.map((filter) => (
               <option key={filter.value} value={filter.value}>
@@ -147,7 +147,7 @@ export function TransactionFilters({
             id="sort"
             name="sort"
             defaultValue={filters.sort}
-            className="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100"
+            className="w-full rounded-lg border border-slate-200 bg-[#fffdfa] px-3 py-2.5 text-sm outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100"
           >
             {TRANSACTION_SORT_OPTIONS.map((sort) => (
               <option key={sort.value} value={sort.value}>
@@ -160,7 +160,7 @@ export function TransactionFilters({
         <div className="flex items-end gap-2">
           <button
             type="submit"
-            className="rounded-lg bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-700"
+            className="rounded-lg bg-[#895129] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[#6f3f20]"
           >
             Apply
           </button>

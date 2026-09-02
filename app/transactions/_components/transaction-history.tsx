@@ -110,7 +110,7 @@ export function TransactionHistory({
   const filtered = hasActiveFilters(filters);
 
   return (
-    <section className="rounded-lg border border-slate-200 bg-white shadow-sm">
+    <section className="rounded-2xl border border-[#e7ded2] bg-white shadow-[0_8px_24px_rgba(89,55,30,0.05)]">
       <div className="flex items-center justify-between gap-4 border-b border-slate-200 p-5">
         <div>
           <h2 className="text-lg font-bold text-slate-950">
@@ -155,7 +155,7 @@ export function TransactionHistory({
               </thead>
               <tbody className="divide-y divide-slate-100 bg-white">
                 {transactions.map((transaction) => (
-                  <tr key={transaction.id}>
+                  <tr key={transaction.id} className="transition hover:bg-[#fffaf4]">
                     <td className="whitespace-nowrap px-5 py-4 text-sm text-slate-600">
                       {formatDisplayDate(transaction.transactionDate)}
                     </td>

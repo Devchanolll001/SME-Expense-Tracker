@@ -207,6 +207,12 @@ export async function getDashboardPageData(
       period_starts_on: range.start,
     })
     .single();
+  const allTimeSummaryQuery = supabase
+    .rpc("sme_reports_summary", {
+      period_ends_on: null,
+      period_starts_on: null,
+    })
+    .single();
   const monthlySummaryQuery = supabase.rpc("sme_dashboard_monthly_summary", {
     period_ends_on: range.end,
     period_starts_on: range.start,
@@ -230,11 +236,13 @@ export async function getDashboardPageData(
 
   const [
     summaryResult,
+    allTimeSummaryResult,
     monthlySummaryResult,
     breakdownResult,
     recentTransactionsResult,
   ] = await Promise.all([
     summaryQuery,
+    allTimeSummaryQuery,
     monthlySummaryQuery,
     breakdownQuery,
     recentTransactionsQuery,
@@ -242,6 +250,7 @@ export async function getDashboardPageData(
 
   if (
     summaryResult.error ||
+    allTimeSummaryResult.error ||
     monthlySummaryResult.error ||
     breakdownResult.error ||
     recentTransactionsResult.error
@@ -254,8 +263,11 @@ export async function getDashboardPageData(
   }
 
   const summaryRow = summaryResult.data as SummaryRow | null;
+  const allTimeSummaryRow = allTimeSummaryResult.data as SummaryRow | null;
   const incomeTotal = normalizeDecimal(summaryRow?.income_total);
   const expenseTotal = normalizeDecimal(summaryRow?.expense_total);
+  const allTimeIncomeTotal = normalizeDecimal(allTimeSummaryRow?.income_total);
+  const allTimeExpenseTotal = normalizeDecimal(allTimeSummaryRow?.expense_total);
   const recentTransactions = (recentTransactionsResult.data ??
     []) as RecentTransactionRow[];
 
@@ -281,7 +293,7 @@ export async function getDashboardPageData(
           percentage: normalizePercentage(row.percentage),
         }),
       ),
-      hasTransactions: normalizeCount(summaryRow?.transaction_count) > 0,
+      hasTransactions: normalizeCount(allTimeSummaryRow?.transaction_count) > 0,
       monthlySummary: (
         (monthlySummaryResult.data ?? []) as MonthlySummaryRow[]
       ).map((row) => ({
@@ -305,7 +317,10 @@ export async function getDashboardPageData(
         type: transaction.type === "income" ? "income" : "expense",
       })),
       summary: {
-        balanceTotal: subtractCurrencyAmounts(incomeTotal, expenseTotal),
+        balanceTotal: subtractCurrencyAmounts(
+          allTimeIncomeTotal,
+          allTimeExpenseTotal,
+        ),
         expenseTotal,
         incomeTotal,
         transactionCount: normalizeCount(summaryRow?.transaction_count),

@@ -91,7 +91,7 @@ export function CategoryList({ categories, filters }: CategoryListProps) {
   const filtered = hasActiveFilters(filters);
 
   return (
-    <section className="rounded-lg border border-slate-200 bg-white shadow-sm">
+    <section className="rounded-2xl border border-[#e7ded2] bg-white shadow-[0_8px_24px_rgba(89,55,30,0.05)]">
       <div className="flex items-center justify-between gap-4 border-b border-slate-200 p-5">
         <div>
           <h2 className="text-lg font-bold text-slate-950">Category List</h2>
@@ -128,7 +128,7 @@ export function CategoryList({ categories, filters }: CategoryListProps) {
               </thead>
               <tbody className="divide-y divide-slate-100 bg-white">
                 {categories.map((category) => (
-                  <tr key={category.id}>
+                  <tr key={category.id} className="transition hover:bg-[#fffaf4]">
                     <td className="max-w-sm px-5 py-4 text-sm">
                       <p className="font-semibold text-slate-900">
                         {category.name}
@@ -175,7 +175,7 @@ export function CategoryList({ categories, filters }: CategoryListProps) {
               <article key={category.id} className="p-5">
                 <div className="flex items-start justify-between gap-4">
                   <div className="min-w-0">
-                    <h3 className="break-words font-semibold text-slate-950">
+                    <h3 className="wrap-break-word font-semibold text-slate-950">
                       {category.name}
                     </h3>
                     <p className="mt-2">

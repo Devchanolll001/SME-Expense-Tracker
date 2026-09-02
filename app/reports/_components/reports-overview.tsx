@@ -88,12 +88,16 @@ function SummaryCard({
   value: string;
 }) {
   return (
-    <article className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
-      <p className="text-sm font-medium text-slate-500">{label}</p>
-      <p className={`mt-3 text-2xl font-bold ${getAmountClass(tone)}`}>
+    <article className="min-w-0 rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+      <p className="max-w-full text-sm font-medium text-slate-500">{label}</p>
+      <p
+        className={`mt-3 max-w-full break-words text-xl font-bold leading-tight sm:text-2xl ${getAmountClass(tone)}`}
+      >
         {value}
       </p>
-      <p className="mt-2 text-xs text-slate-500">{detail}</p>
+      <p className="mt-2 max-w-full break-words text-xs text-slate-500">
+        {detail}
+      </p>
     </article>
   );
 }
@@ -209,7 +213,7 @@ function FinancialOverview({
   return (
     <section>
       <h2 className="sr-only">Financial Overview</h2>
-      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+      <div className="grid min-w-0 gap-4 md:grid-cols-2 xl:grid-cols-4">
         <SummaryCard
           label="Total Income"
           value={formatCurrency(summary.incomeTotal, currency)}

@@ -33,13 +33,13 @@ export default async function OnboardingPage() {
       : null;
 
   return (
-    <main className="min-h-screen bg-slate-100 px-4 py-10 sm:px-6 lg:px-8">
+    <main className="min-h-screen bg-[#f5f1e8] px-4 py-10 sm:px-6 lg:px-8">
       <div className="mx-auto flex min-h-[84vh] max-w-lg items-center justify-center">
-        <div className="w-full rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_18px_45px_rgba(15,23,42,0.08)] sm:p-8">
+        <div className="w-full rounded-2xl border border-[#e7ded2] bg-white p-6 shadow-[0_22px_55px_rgba(89,55,30,0.12)] sm:p-8">
           <div className="mb-8 flex items-start justify-between gap-4">
             <div>
               <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-600 text-xl font-bold text-white shadow-sm shadow-emerald-600/25">
-                N
+                SME
               </div>
               <p className="text-sm font-semibold uppercase tracking-[0.08em] text-emerald-700">
                 SME Expense Tracker

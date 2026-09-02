@@ -21,16 +21,40 @@ function SummaryCard({
   label,
   value,
   detail,
+  tone,
 }: {
   detail: string;
   label: string;
+  tone: "income" | "expense" | "neutral";
   value: string;
 }) {
+  const toneClass = {
+    income: "text-[#2f7d4a]",
+    expense: "text-[#660f09]",
+    neutral: "text-[#19312d]",
+  }[tone];
+
   return (
-    <article className="rounded-xl border border-[#e3d7ca] bg-[#fffdfa] p-5 shadow-sm">
-      <p className="text-sm font-medium text-slate-500">{label}</p>
-      <p className="mt-3 text-2xl font-bold text-slate-950">{value}</p>
-      <p className="mt-2 text-xs text-slate-500">{detail}</p>
+    <article className="min-w-0 rounded-2xl border border-[#d8e3de] bg-white p-5 shadow-[0_10px_30px_rgba(23,76,67,0.06)]">
+      <div className="flex items-start justify-between gap-3">
+        <p className="min-w-0 max-w-full text-sm font-medium text-slate-500">
+          {label}
+        </p>
+        <span
+          aria-hidden="true"
+          className={`shrink-0 text-lg ${toneClass}`}
+        >
+          {tone === "income" ? "+" : tone === "expense" ? "-" : "•"}
+        </span>
+      </div>
+      <p
+        className={`mt-3 max-w-full break-words text-xl font-bold leading-tight tracking-tight sm:text-2xl ${toneClass}`}
+      >
+        {value}
+      </p>
+      <p className="mt-2 max-w-full break-words text-xs text-slate-500">
+        {detail}
+      </p>
     </article>
   );
 }
@@ -293,11 +317,12 @@ export function DashboardOverview({
         </div>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+      <div className="grid min-w-0 gap-4 md:grid-cols-2 xl:grid-cols-4">
         <SummaryCard
           label="Total Income"
           value={formatCurrency(dashboard.summary.incomeTotal, businessCurrency)}
           detail={dashboard.period.label}
+          tone="income"
         />
         <SummaryCard
           label="Total Expenses"
@@ -306,6 +331,7 @@ export function DashboardOverview({
             businessCurrency,
           )}
           detail={dashboard.period.label}
+          tone="expense"
         />
         <SummaryCard
           label="Current Balance"
@@ -314,11 +340,13 @@ export function DashboardOverview({
             businessCurrency,
           )}
           detail="Income minus expenses"
+          tone={dashboard.summary.balanceTotal.startsWith("-") ? "expense" : "neutral"}
         />
         <SummaryCard
           label="Total Transactions"
           value={dashboard.summary.transactionCount.toLocaleString("en-NG")}
           detail={dashboard.period.label}
+          tone="neutral"
         />
       </div>
 

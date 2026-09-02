@@ -1,8 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f7f1e8;
-  --foreground: #2f241f;
+  --background: #f5f1e8;
+  --foreground: #171717;
+  --brand-deep: #895129;
+  --brand-green: #2f7d4a;
   --campfire-brown: #895129;
   --campfire-gold: #ad7a32;
   --campfire-olive: #8a6e29;
@@ -22,15 +24,32 @@ body {
   font-family: var(--font-geist-sans), sans-serif;
 }
 
+input,
+textarea,
+select {
+  color: #171717;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #8a8178;
+  opacity: 1;
+}
+
+::selection {
+  background: #ead8bc;
+  color: #895129;
+}
+
 /* Keep the established utility classes, but align their visual output with the product palette. */
 .bg-slate-50 { background-color: #faf7f2; }
 .bg-slate-100 { background-color: #f3ece2; }
 .bg-slate-950, .bg-slate-900 { background-color: var(--campfire-brown); }
-.text-slate-950, .text-slate-900 { color: #2f241f; }
-.text-slate-700, .text-slate-600 { color: #5c4b42; }
-.text-slate-500, .text-slate-400 { color: #806f64; }
-.border-slate-200, .border-slate-300 { border-color: #dfd1c2; }
-.divide-slate-100 > :not([hidden]) ~ :not([hidden]) { border-color: #eee4d9; }
+.text-slate-950, .text-slate-900 { color: #171717; }
+.text-slate-700, .text-slate-600 { color: #6b625a; }
+.text-slate-500, .text-slate-400 { color: #8a8178; }
+.border-slate-200, .border-slate-300 { border-color: #e7ded2; }
+.divide-slate-100 > :not([hidden]) ~ :not([hidden]) { border-color: #eee6dc; }
 .bg-emerald-50 { background-color: #f7efdf; }
 .bg-emerald-600, .bg-emerald-500 { background-color: var(--campfire-brown); }
 .bg-emerald-700 { background-color: #6f3f20; }
